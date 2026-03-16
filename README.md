@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Welcome to your Lovable project
 
 ## Project info
@@ -71,3 +72,7 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+=======
+# Ruvva-s-Portfolio
+Source code for my personal portfolio website. This project showcases my skills, projects, and learning journey in programming and technology. It highlights the work I have built while exploring development concepts and serves as a place to present my progress and experiments as I continue improving my coding and problem-solving abilities.
+>>>>>>> ea843ddddda781d890f06e7a32d6358df7620191
