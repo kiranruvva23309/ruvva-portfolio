@@ -1,78 +1,39 @@
-<<<<<<< HEAD
-# Welcome to your Lovable project
+# Ruvva's Portfolio
 
-## Project info
+This repository contains the source code for my personal portfolio website. I built this project to showcase the work I’ve done while learning programming and exploring different areas of development.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+The site highlights some of the projects I’ve built, the technologies I’ve been learning, and the progress I’ve made as I continue improving my skills in software development.
 
-## How can I edit this code?
+## About the Project
 
-There are several ways of editing your application.
+The goal of this portfolio is simple:
+to have a place where I can present my projects, experiments, and ideas in one place. As I learn new tools and concepts, this site will continue to evolve.
 
-**Use Lovable**
+## Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+The project is built using:
 
-Changes made via Lovable will be committed automatically to this repo.
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* shadcn/ui
 
-**Use your preferred IDE**
+## Running the Project Locally
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+If you want to run the project locally, follow these steps:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+This will start the development server and you can view the site in your browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Purpose
 
-**Use GitHub Codespaces**
+This project is mainly for learning and documenting my development journey. It also acts as a central place to share my work with others.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
-=======
-# Ruvva-s-Portfolio
-Source code for my personal portfolio website. This project showcases my skills, projects, and learning journey in programming and technology. It highlights the work I have built while exploring development concepts and serves as a place to present my progress and experiments as I continue improving my coding and problem-solving abilities.
->>>>>>> ea843ddddda781d890f06e7a32d6358df7620191
+More updates and projects will be added over time.
