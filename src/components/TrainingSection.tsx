@@ -15,14 +15,14 @@ const TrainingSection = () => (
         <div className="p-8">
           <div className="flex items-center justify-center gap-3 mb-2">
             <BookOpen size={22} className="text-primary" />
-            <h3 className="font-semibold text-foreground text-lg">Skill Development – LPU</h3>
+            <h3 className="font-semibold text-foreground text-lg">Advanced Data Structures – Skill Development, LPU</h3>
           </div>
           <p className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-4 font-mono-code">
             <Calendar size={14} /> Jun 2025 – Aug 2025 • Summer Training
           </p>
 
           <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-            Completed an advanced Data Structures and Algorithms training program using Python. Built a project titled Smart Parcel Locker that applies core data structure techniques to manage parcel storage, retrieval, and tracking efficiently.
+            Completed an advanced Data Structures and Algorithms training program using C++. Built a project titled Smart Parcel Locker that applies core data structure techniques to manage parcel storage, retrieval, and tracking efficiently.
           </p>
 
           <div className="mb-4">
@@ -37,7 +37,7 @@ const TrainingSection = () => (
           <div className="mb-4">
             <p className="text-sm font-medium text-foreground mb-2">Tools used:</p>
             <div className="flex flex-wrap justify-center gap-2">
-              {["Python", "Data Structures", "Algorithms"].map(t => (
+              {["C++", "Data Structures", "Algorithms"].map(t => (
                 <span key={t} className="px-2 py-1 text-xs rounded-md bg-secondary text-muted-foreground font-mono-code">{t}</span>
               ))}
             </div>

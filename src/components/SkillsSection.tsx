@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Code2, Globe, Wrench, Users,
   FileCode, Cpu, Coffee, Hash,
@@ -76,6 +77,30 @@ const categories: Category[] = [
   },
 ];
 
+/* ── skill to project mapping ───────────────────────────────── */
+
+const skillProjects: Record<string, string[]> = {
+  "Python": ["Flipkart Sales Analysis (Python)"],
+  "SQL": ["Smart Parcel Tracker"],
+  "Java": [],
+  "C": [],
+  "C++": ["Smart Parcel Tracker"],
+  "Pandas": ["Flipkart Sales Analysis (Python)"],
+  "NumPy": ["Flipkart Sales Analysis (Python)"],
+  "Matplotlib": ["Flipkart Sales Analysis (Python)"],
+  "Seaborn": ["Flipkart Sales Analysis (Python)"],
+  "Excel": ["Sales Analysis Dashboard (Excel)"],
+  "Power BI": ["Global Armed Conflict Analysis (Power BI)"],
+  "MySQL": ["Smart Parcel Tracker"],
+  "MS Azure": ["Cloud Computing"],
+  "React": ["MelodyMind – AI Music Tutor"],
+  "Communication": [],
+  "Problem-Solving": ["Smart Parcel Tracker"],
+  "Time Management": ["My Precious Life"],
+  "Analytical Thinking": ["Global Armed Conflict Analysis", "Flipkart Sales Analysis"],
+  "Teamwork": ["Smart Parcel Tracker", "MelodyMind – AI Music Tutor"],
+};
+
 /* ── animation variants ─────────────────────────────────────── */
 
 const fadeUp = {
@@ -90,64 +115,97 @@ const chipVariant = {
 
 /* ── component ──────────────────────────────────────────────── */
 
-const SkillsSection = () => (
-  <section id="skills" className="section-container">
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.05 }}
-      transition={{ staggerChildren: 0.1 }}
-    >
-      {/* Heading */}
-      <motion.div variants={fadeUp} className="text-center mb-14">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-3">
-          <span className="text-foreground">Technical </span>
-          <span className="gradient-text">Arsenal</span>
-        </h2>
-        <div className="w-16 h-1 rounded-full bg-primary mx-auto" />
-      </motion.div>
+const SkillsSection = () => {
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
-      {/* Categories */}
-      <div className="space-y-12">
-        {categories.map((cat) => (
-          <motion.div
-            key={cat.title}
-            variants={fadeUp}
-            className="relative"
-          >
-            {/* Category title with accent bar */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className={`w-1 h-7 rounded-full bg-gradient-to-b ${cat.accentColor}`} />
-              <h3 className="text-xl font-bold text-foreground">{cat.title}</h3>
-            </div>
-
-            {/* Skill chips */}
+  return (
+    <section id="skills" className="section-container">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.05 }}
+        transition={{ staggerChildren: 0.1 }}
+      >
+        {/* Heading */}
+        <motion.div variants={fadeUp} className="text-center mb-14">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+            <span className="text-foreground">Technical </span>
+            <span className="gradient-text">Arsenal</span>
+          </h2>
+          <div className="w-16 h-1 rounded-full bg-primary mx-auto" />
+        </motion.div>
+  
+        {/* Categories */}
+        <div className="space-y-12">
+          {categories.map((cat) => (
             <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ staggerChildren: 0.05 }}
-              className="flex flex-wrap gap-3"
+              key={cat.title}
+              variants={fadeUp}
+              className="relative"
             >
-              {cat.skills.map((skill) => (
-                <motion.div
-                  key={skill.name}
-                  variants={chipVariant}
-                  whileHover={{ scale: 1.06, y: -2 }}
-                  className="group glass-card rounded-xl px-5 py-3 flex items-center gap-2.5
-                             cursor-default hover:border-primary/30 transition-all duration-200
-                             hover:shadow-lg hover:shadow-primary/5"
-                >
-                  <skill.icon size={18} className={`${skill.color} transition-transform group-hover:scale-110`} />
-                  <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                </motion.div>
-              ))}
+              {/* Category title with accent bar */}
+              <div className="flex items-center gap-3 mb-5">
+                <div className={`w-1 h-7 rounded-full bg-gradient-to-b ${cat.accentColor}`} />
+                <h3 className="text-xl font-bold text-foreground">{cat.title}</h3>
+              </div>
+  
+              {/* Skill chips */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ staggerChildren: 0.05 }}
+                className="flex flex-wrap gap-3"
+              >
+                {cat.skills.map((skill) => (
+                  <div key={skill.name} className="relative group/tooltip">
+                    <motion.div
+                      variants={chipVariant}
+                      whileHover={{ scale: 1.06, y: -2 }}
+                      onHoverStart={() => setHoveredSkill(skill.name)}
+                      onHoverEnd={() => setHoveredSkill(null)}
+                      className="group glass-card rounded-xl px-5 py-3 flex items-center gap-2.5
+                                 cursor-default hover:border-primary/50 transition-all duration-200
+                                 hover:shadow-lg hover:shadow-primary/10"
+                    >
+                      <skill.icon size={18} className={`${skill.color} transition-transform group-hover:scale-110`} />
+                      <span className="text-sm font-medium text-foreground">{skill.name}</span>
+                    </motion.div>
+  
+                    {/* Pop-up Tooltip */}
+                    <AnimatePresence>
+                      {hoveredSkill === skill.name && skillProjects[skill.name] && skillProjects[skill.name].length > 0 && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 z-50 w-56 p-3 
+                                     rounded-xl bg-[#0a0f19] border border-primary/30 shadow-2xl backdrop-blur-xl
+                                     pointer-events-none"
+                        >
+                          <div className="text-[10px] uppercase tracking-wider text-primary font-bold mb-2">Used in Projects</div>
+                          <div className="space-y-1.5">
+                            {skillProjects[skill.name].map((proj) => (
+                              <div key={proj} className="flex items-center gap-2 text-xs text-gray-300">
+                                <div className="w-1 h-1 rounded-full bg-primary" />
+                                {proj}
+                              </div>
+                            ))}
+                          </div>
+                          {/* Triangle pointer */}
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-[#0a0f19] filter drop-shadow(0 2px 2px rgba(0,0,0,0.5))" />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </motion.div>
             </motion.div>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
-  </section>
-);
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  );
+};
 
 export default SkillsSection;
