@@ -15,7 +15,7 @@ const education = [
     school: "Narayana Junior College",
     location: "Vishakhapatnam, Andhra Pradesh",
     degree: "Intermediate",
-    score: "Percentage: 90.6%",
+    score: "Percentage: 90.6",
     color: "from-accent to-primary",
   },
   {
@@ -23,7 +23,7 @@ const education = [
     school: "Narayana High School",
     location: "Vishakhapatnam, Andhra Pradesh",
     degree: "Matriculation",
-    score: "Percentage: 99.67%",
+    score: "Percentage: 99.67",
     color: "from-primary to-accent",
   },
 ];

@@ -70,7 +70,7 @@ const CVModal = ({ isOpen, onClose }: CVModalProps) => {
                 </p>
                 <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-blue-400/90 italic">
                   <a href="https://www.linkedin.com/in/ruvva-kiran-chand-a8127a35b/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-blue-300 transition-colors">
-                    <Linkedin size={13} /> kiran-ruvva
+                    <Linkedin size={13} /> Ruvva Kiran Chand
                   </a>
                   <a href="https://github.com/kiranruvva23309" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-blue-300 transition-colors">
                     <Github size={13} /> kiranruvva23309
@@ -109,7 +109,7 @@ const CVModal = ({ isOpen, onClose }: CVModalProps) => {
                   {/* Project Cards with glass effect */}
                   {[
                     {
-                      title: "Smart Parcel Tracker – Real-Time Delivery & Locker System",
+                      title: "Smart Parcel Tracker – Delivery & Locker System",
                       date: "Jul 2025",
                       items: [
                         "Created a parcel management system enabling customers, delivery agents, and admins to securely track shipments and access lockers in real time.",

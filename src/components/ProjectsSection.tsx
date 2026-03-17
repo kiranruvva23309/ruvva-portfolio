@@ -24,7 +24,7 @@ const projects = [
     image: projectParcel,
     title: "Smart Parcel Tracker – Real-Time Delivery & Locker System",
     duration: "Jul 2025",
-    tech: ["Python", "Arrays", "Linked Lists", "Queues", "Hash Tables"],
+    tech: ["C++", "Arrays", "Linked Lists", "Queues", "Hash Tables"],
     desc: "A parcel management system enabling customers, delivery agents, and admins to securely track shipments, access lockers, and monitor operations in real time.",
     features: [
       "Login authentication & OTP-based locker access",
