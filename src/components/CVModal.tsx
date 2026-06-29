@@ -205,7 +205,7 @@ const CVModal = ({ isOpen, onClose }: CVModalProps) => {
                 </h2>
                 <div className="space-y-3">
                   {[
-                    { school: "Lovely Professional University", degree: "B.Tech – CSE | CGPA: 6.37", date: "Aug 23 – Present" },
+                    { school: "Lovely Professional University", degree: "B.Tech – CSE | CGPA: 6.54", date: "Aug 23 – Present" },
                     { school: "Narayana Junior College", degree: "Intermediate | Percentage: 90.6", date: "Apr 21 – Mar 23" },
                     { school: "Narayana High School", degree: "Matriculation | Percentage: 99.67", date: "Apr 20 – Mar 21" }
                   ].map((e, i) => (
@@ -227,9 +227,7 @@ const CVModal = ({ isOpen, onClose }: CVModalProps) => {
                 </h2>
                 <ul className="space-y-4 text-sm text-gray-400">
                   {[
-                    { text: "Solved 70+ coding problems on LeetCode to strengthen DSA and problem-solving skills.", date: "Mar 2025" },
-                    { text: "Attended technical seminars on system design and data science provided by industry experts.", date: "Oct 2025" },
-                    { text: "Participated in the Cyber Sleuth workshop on ethical hacking concepts.", date: "Sep 2023" }
+                    { text: "Solved 70+ coding problems on LeetCode to strengthen DSA and problem-solving skills.", date: "Mar 2025" }
                   ].map((a, i) => (
                     <li key={i} className="flex gap-4 group">
                       <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500/50 group-hover:bg-blue-400 shrink-0 transition-colors" />

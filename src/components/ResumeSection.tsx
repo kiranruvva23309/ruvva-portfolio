@@ -42,7 +42,7 @@ const ResumeSection = () => {
               <GraduationCap size={12} /> B.Tech CSE
             </span>
             <span className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full text-muted-foreground" style={{ border: "1px solid rgba(255,255,255,0.1)", backgroundColor: "rgba(255,255,255,0.03)" }}>
-              <Star size={12} /> CGPA 6.37
+              <Star size={12} /> CGPA 6.54
             </span>
           </div>
 
