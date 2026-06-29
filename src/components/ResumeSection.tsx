@@ -20,8 +20,8 @@ const ResumeSection = () => {
           onClick={() => setIsCVOpen(true)}
           className="max-w-lg mx-auto rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(59,130,246,0.1)]"
           style={{
-            backgroundColor: "rgba(255,255,255,0.03)",
-            border: "1px solid rgba(255,255,255,0.08)",
+            backgroundColor: "var(--glass-bg)",
+            border: "1px solid var(--glass-border)",
           }}
         >
           <div className="flex items-start justify-between mb-4">
@@ -35,13 +35,13 @@ const ResumeSection = () => {
           </div>
 
           <div className="flex flex-wrap gap-3 mb-6">
-            <span className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full text-muted-foreground" style={{ border: "1px solid rgba(255,255,255,0.1)", backgroundColor: "rgba(255,255,255,0.03)" }}>
+            <span className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full text-muted-foreground" style={{ border: "1px solid var(--glass-border)", backgroundColor: "var(--glass-bg)" }}>
               <MapPin size={12} /> LPU, Phagwara
             </span>
-            <span className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full text-muted-foreground" style={{ border: "1px solid rgba(255,255,255,0.1)", backgroundColor: "rgba(255,255,255,0.03)" }}>
+            <span className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full text-muted-foreground" style={{ border: "1px solid var(--glass-border)", backgroundColor: "var(--glass-bg)" }}>
               <GraduationCap size={12} /> B.Tech CSE
             </span>
-            <span className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full text-muted-foreground" style={{ border: "1px solid rgba(255,255,255,0.1)", backgroundColor: "rgba(255,255,255,0.03)" }}>
+            <span className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full text-muted-foreground" style={{ border: "1px solid var(--glass-border)", backgroundColor: "var(--glass-bg)" }}>
               <Star size={12} /> CGPA 6.54
             </span>
           </div>

@@ -41,11 +41,11 @@ const CVModal = ({ isOpen, onClose }: CVModalProps) => {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl backdrop-blur-3xl cv-modal-body"
             style={{
-              backgroundColor: "rgba(15, 23, 42, 0.4)",
-              border: "1px solid rgba(255,255,255,0.12)",
+              backgroundColor: "var(--glass-bg)",
+              border: "1px solid var(--glass-border)",
               scrollbarWidth: "none",
               msOverflowStyle: "none",
-              boxShadow: "0 30px 80px rgba(0,0,0,0.4), 0 0 60px rgba(59,130,246,0.05), inset 0 1px 0 rgba(255,255,255,0.1)"
+              boxShadow: "0 30px 80px rgba(0,0,0,0.2), 0 0 60px rgba(59,130,246,0.05)"
             }}
             onClick={(e) => e.stopPropagation()}
           >

@@ -1,10 +1,18 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Calendar, Globe } from "lucide-react";
 import projectParcel from "@/assets/project-parcel.jpg";
 import projectSalesExcel from "@/assets/project-sales-excel.jpg";
 import projectSalesPython from "@/assets/project-sales-python.jpg";
 import projectConflict from "@/assets/project-conflict.png";
 import projectMelodyMind from "@/assets/project-melodymind.png";
+
+const filterCategories = [
+  { id: "all", label: "All Projects" },
+  { id: "analytics", label: "Data Analytics & Power BI" },
+  { id: "software", label: "Software & DSA" },
+  { id: "web-ai", label: "Web & AI" },
+];
 
 const projects = [
   {
@@ -19,6 +27,7 @@ const projects = [
     ],
     github: "https://github.com/kiranruvva23309",
     live: null,
+    categories: ["analytics"],
   },
   {
     image: projectParcel,
@@ -33,6 +42,7 @@ const projects = [
     ],
     github: "https://github.com/kiranruvva23309",
     live: null,
+    categories: ["software"],
   },
   {
     image: projectMelodyMind,
@@ -46,6 +56,7 @@ const projects = [
     ],
     github: "https://github.com/kiranruvva23309",
     live: null,
+    categories: ["software", "web-ai"],
   },
   {
     image: projectSalesExcel,
@@ -60,6 +71,7 @@ const projects = [
     ],
     github: "https://github.com/kiranruvva23309",
     live: null,
+    categories: ["analytics"],
   },
   {
     image: projectSalesPython,
@@ -74,64 +86,104 @@ const projects = [
     ],
     github: "https://github.com/kiranruvva23309",
     live: null,
+    categories: ["analytics"],
   },
 ];
 
 const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
 
-const ProjectsSection = () => (
-  <section id="projects" className="section-container">
-    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} transition={{ staggerChildren: 0.12 }} className="text-center">
-      <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-2 gradient-text inline-block">Projects</motion.h2>
-      <motion.div variants={fadeUp} className="w-16 h-1 rounded-full bg-primary mb-10 mx-auto" />
+const ProjectsSection = () => {
+  const [activeFilter, setActiveFilter] = useState("all");
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {projects.map(p => (
-          <motion.div key={p.title} variants={fadeUp} className="glass-card rounded-xl overflow-hidden hover:border-primary/20 transition-all group text-center">
-            <img src={p.image} alt={p.title} className="w-full h-44 object-cover" loading="lazy" />
-            <div className="p-6">
-              <h3 className="font-semibold text-foreground leading-tight mb-2">{p.title}</h3>
-              <p className="flex items-center justify-center gap-2 text-xs text-muted-foreground font-mono-code mb-3">
-                <Calendar size={12} /> {p.duration}
-              </p>
+  const filteredProjects = projects.filter(p => 
+    activeFilter === "all" || p.categories.includes(activeFilter)
+  );
 
-              <div className="flex flex-wrap justify-center gap-2 mb-4">
-                {p.tech.map(t => (
-                  <span key={t} className="px-2 py-1 text-xs rounded-md bg-secondary text-muted-foreground font-mono-code">{t}</span>
-                ))}
-              </div>
+  return (
+    <section id="projects" className="section-container">
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} transition={{ staggerChildren: 0.12 }} className="text-center">
+        <motion.h2 variants={fadeUp} className="text-3xl font-bold mb-2 gradient-text inline-block">Projects</motion.h2>
+        <motion.div variants={fadeUp} className="w-16 h-1 rounded-full bg-primary mb-8 mx-auto" />
 
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{p.desc}</p>
+        {/* Filter Tabs */}
+        <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-2 mb-10">
+          {filterCategories.map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveFilter(cat.id)}
+              className={`px-4 py-2 text-xs font-semibold rounded-full border transition-all duration-300 ${
+                activeFilter === cat.id
+                  ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20"
+                  : "bg-secondary/40 text-muted-foreground border-border hover:border-primary/40 hover:text-foreground"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </motion.div>
 
-              {p.features && (
-                <ul className="text-sm text-muted-foreground mb-4 space-y-1 inline-block text-left">
-                  {p.features.map(f => (
-                    <li key={f} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              )}
+        {/* Projects Grid with layout animation */}
+        <motion.div layout className="grid md:grid-cols-2 gap-6">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map(p => (
+              <motion.div 
+                key={p.title} 
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                variants={fadeUp} 
+                className="glass-card rounded-xl overflow-hidden hover:border-primary/20 transition-all group flex flex-col h-full text-center"
+              >
+                <div className="relative overflow-hidden w-full h-44 shrink-0 border-b border-border/50">
+                  <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="font-semibold text-foreground text-lg leading-tight mb-2">{p.title}</h3>
+                  <p className="flex items-center justify-center gap-2 text-xs text-muted-foreground font-mono-code mb-3">
+                    <Calendar size={12} /> {p.duration}
+                  </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                {p.github && (
-                  <a href={p.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-link hover:underline">
-                    <ExternalLink size={14} /> GitHub
-                  </a>
-                )}
-                {p.live && (
-                  <a href={p.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-link hover:underline">
-                    <Globe size={14} /> Live Demo
-                  </a>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
-  </section>
-);
+                  <div className="flex flex-wrap justify-center gap-2 mb-4">
+                    {p.tech.map(t => (
+                      <span key={t} className="px-2.5 py-1 text-xs rounded-md bg-secondary text-muted-foreground font-mono-code">{t}</span>
+                    ))}
+                  </div>
+
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{p.desc}</p>
+
+                  {p.features && (
+                    <ul className="text-sm text-muted-foreground mb-6 space-y-1.5 text-left inline-block self-center">
+                      {p.features.map(f => (
+                        <li key={f} className="flex items-start gap-2 leading-relaxed">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-2" />
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <div className="flex flex-wrap items-center justify-center gap-4 mt-auto">
+                    {p.github && (
+                      <a href={p.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-link hover:underline font-medium hover:text-primary transition-colors">
+                        <ExternalLink size={14} /> GitHub
+                      </a>
+                    )}
+                    {p.live && (
+                      <a href={p.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-link hover:underline font-medium hover:text-primary transition-colors">
+                        <Globe size={14} /> Live Demo
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+};
 
 export default ProjectsSection;
